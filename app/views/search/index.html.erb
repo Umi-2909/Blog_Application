@@ -1,0 +1,38 @@
+<h1 class="text-center"><%= pluralize(@posts.count, "Result") %></h1>
+<table class="table align-middle mb-0 bg-white">
+  <thead class="bg-light">
+    <tr>
+      <th><%= sort_link(@query, :user_name, "Users") %></th>
+      <th><%= sort_link(@query, :title, "Title", default_order: :asc) %></th>
+      <th><%= sort_link(@query, :body, "Blog Content") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+    <tr>
+      <td>
+        <div class="d-flex align-items-center">
+          <img
+              src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+              alt=""
+              style="width: 45px; height: 45px"
+              class="rounded-circle"
+              />
+          <div class="ms-3">
+            <p class="fw-bold mb-1"><%= link_to post.user.name, post.user %></p>
+          </div>
+        </div>
+      </td>
+      <td>
+        <p class="fw-normal mb-1"><%= link_to post.title, post %></p>
+      </td>
+      <td><%= post.body.truncate_words(25) %></td>
+      <td>
+        <button type="button" class="btn btn-link btn-sm btn-rounded">
+          Edit
+        </button>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

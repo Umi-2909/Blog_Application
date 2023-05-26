@@ -6,20 +6,6 @@
 # breaking changes in upgrades (i.e., in the event that future versions of
 # Devise change the default values for those options).
 #
-class TurboFailureApp < Devise::FailureApp
-  def respond
-    if request_format == :turbo_stream
-      :redirect
-    else
-      super
-    end
-  end
-  def skip_format?
-    %w[html turbo_stream].include? request_format.to_s
-  end
-end
-
-
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
@@ -28,12 +14,8 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '8da8f64cf5bd860508a86ca13c6d734c9016867d3b96b0b3428e6f4d301e599120ed9248c0f2d449346857baeb40d490fdd517eee4bfc2eea82c4bc76d6aa13a'
-  config.parent_controller = 'TurboDeviseController'
-  config.navigational_formats = ['*/*', :html, :turbo_stream]
-  config.warden do |manager|
-    manager.failure_app = TurboFailureApp
-  end
+  # config.secret_key = '9d4d267f051f7106769c35725690aacb519e28ad1044fa902ff4909eba9083219eb3cbf903d7b9fe1891b9afe204286c940d6b8f7f5c8cd5b145089c0dc18340'
+
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
@@ -144,7 +126,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '8dec6e4d31e0b59439d0136a4711279f242a30db90814360aa33e9ae915fea6a776a87b27559093d374d3f5230e2914ce52ef0a6591693f4843c6408915a4de7'
+  # config.pepper = '47dd8891968ab64e3f6983130d2fc9c0fce90f7ef0119b3e0db6c495c4809548b0036dfd0062e4294ec0af8588a1a9b5d8deedf5ef49282b8b1daf9f8cf7ae20'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
