@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+.navbar-brand{
+    font-size: 24px;
+    margin-right: 24px;
+}
+.nav-item{
+    padding: 0 12px;
+    font-size: 20px;
+}
+.dropdown{
+    list-style-type: none
+}
+a{
+    text-decoration: none;
+}
