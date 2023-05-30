@@ -2,6 +2,7 @@
 
 
   <%= render @post %>
+  <%= image_tag url_for(@post.image) if @post.image.attached? %>
 
   <div>
     <%= link_to "Edit this post", edit_post_path(@post) %> |

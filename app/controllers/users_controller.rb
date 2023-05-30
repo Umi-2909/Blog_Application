@@ -5,6 +5,7 @@ class UsersController < ApplicationController
       @user.views = 0
     end
     @user.update(views: @user.views + 1)
+    @posts = @user.posts.order(create_at: :desc)
   end
   private
   def set_user
