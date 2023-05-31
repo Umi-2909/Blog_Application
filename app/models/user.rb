@@ -13,4 +13,7 @@ class User < ApplicationRecord
     count = posts.count
     return count
   end
+  def make_admin
+    update(admin: true)
+  end
 end
