@@ -75,4 +75,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem 'cancancan', '~> 3.5'
 end

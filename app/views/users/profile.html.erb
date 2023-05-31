@@ -1,13 +1,18 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-4">
-            <%= image_tag(@user.avatar, style:"width:150px; height: 150px; border-radius:100%") if @user.avatar.attached?%>
+            <% if @user.avatar.present? %>
+                <%= image_tag(@user.avatar, style:"width:150px; height: 150px; border-radius:100%") if @user.avatar.attached?%>
+            <% else %>
+                <%= image_tag("default_avatar1/default_avatar.png", style:"width:150px; height: 150px; border-radius:100%") %>
+            <%end%>
         </div>
         <div class="col-8">
             <h1><%= @user.name %></h1>
             <h6>
                 <%= pluralize(@user.comments.size, "Comment")%> |
                 <%= pluralize(@user.views,"view")%>
+                <%= pluralize(@user.total_post,"post")%>
             </h6>
         </div>
     </div>
