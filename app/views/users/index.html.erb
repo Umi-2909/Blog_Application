@@ -46,7 +46,7 @@
             <% flag = true %>
                 <% @users.sort_by { |user| user.comments.size }.reverse.each do |user| %>
             <% if flag %>
-                <h5 class="col-8">Most Comment</h5>
+                <h5 class="col-8">Most Comments</h5>
                 <h5 class="col-4 d-flex align-items-center justify-content-center">Total</h5>
             <% flag = false %>
             <% end %>
@@ -65,7 +65,7 @@
         </div>
         <div class="col-3 row">
             <% flag = true %>
-    <% @users.sort_by(&:created_at).each do |user| %>
+            <% @users.sort_by(&:created_at).each do |user| %>
 
             <% if flag %>
                 <h5 class="col-8">Oldest Members</h5>
