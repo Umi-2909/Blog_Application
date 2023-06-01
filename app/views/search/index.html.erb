@@ -23,14 +23,9 @@
         </div>
       </td>
       <td>
-        <p class="fw-normal mb-1"><%= link_to post.title, post %></p>
+        <p class="fw-normal mb-1"><%= link_to post.title.truncate_words(20), post %></p>
       </td>
       <td><%= post.body.truncate_words(20) %></td>
-      <td>
-        <button type="button" class="btn btn-link btn-sm btn-rounded">
-          Edit
-        </button>
-      </td>
     </tr>
     <% end %>
   </tbody>

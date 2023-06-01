@@ -10,9 +10,9 @@
         <div class="col-8">
             <h1><%= @user.name %></h1>
             <h6>
-                <%= pluralize(@user.comments.size, "Comment")%> |
+                <%= pluralize(@user.total_post,"post")%> |
+                <%= pluralize(@user.comments.size, "Comment")%>
                 <%= pluralize(@user.views,"view")%>
-                <%= pluralize(@user.total_post,"post")%>
             </h6>
         </div>
     </div>
@@ -20,7 +20,7 @@
         <div class="col-1">
         </div>
         <div>
-            <% @posts.each do |post| %>
+            <% @posts.sort_by(&:created_at).reverse_each do |post| %>
             <div class="col-10">
                 <div class="card mt-3">
                     <div class="card-body">
