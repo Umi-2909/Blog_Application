@@ -11,19 +11,22 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+  <div class="form-floating">
+    <%= form.text_field :title, class: "form-control", placeholder: "Leave a comment here", id: "floatingTextarea" %>
+    <%= form.label :title, for: "floatingTextarea" %>
   </div>
 
-  <div>
-    <%= form.label :body, style: "display: block" %>
-    <%= form.text_area :body %>
+
+  <div class="form-floating">
+    <%= form.text_area :body, class: "form-control", placeholder: "Leave a comment here", id: "floatingTextarea2", style: "height: 100px" %>
+    <%= form.label :body, for: "floatingTextarea2" %>
   </div>
+
 
   <div>
     <%= form.file_field :image %>
   </div>
+
 
   <div>
     <%= form.submit %>

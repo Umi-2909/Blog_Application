@@ -1,0 +1,88 @@
+
+    <div class="d-flex">
+        <div class="col-3 row">
+            <% flag = true %>
+                <% @users.sort_by(&:total_post).reverse.each do |user| %>
+                <% if flag %>
+                    <h5 class="col-8">Most Posts</h5>
+                    <h5 class="col-4 d-flex align-items-center justify-content-center">Total</h5>
+                <% flag = false %>
+                <% end %>
+                <label class="col-8" style="margin: 8px 0;">
+                    <% if user.avatar.present? %>
+                        <%= image_tag(user.avatar, style:"width:36px; height: 36px; border-radius:100%") if user.avatar.attached?%>
+                    <% else %>
+                        <%= image_tag("default_avatar1/default_avatar.png", style:"width:36px; height: 36px; border-radius:100%") %>
+                    <%end%>
+                    <%= user.name %>
+                </label>
+                <span class="col-4 d-flex align-items-center justify-content-center" style="margin: 8px 0;">
+                    <%= user.total_post %>
+                </span>
+                <%end%>
+        </div>
+        <div class="col-3 row">
+            <% flag = true %>
+                <% @users.reject { |user| user.views.nil? }.sort_by(&:views).reverse.each do |user| %>
+            <% if flag %>
+                <h5 class="col-8">Most Profile Views</h5>
+                <h5 class="col-4 d-flex align-items-center justify-content-center">Total</h5>
+            <% flag = false %>
+            <% end %>
+                <label class="col-8" style="margin: 8px 0;">
+                    <% if user.avatar.present? %>
+                        <%= image_tag(user.avatar, style:"width:36px; height: 36px; border-radius:100%") if user.avatar.attached?%>
+                    <% else %>
+                        <%= image_tag("default_avatar1/default_avatar.png", style:"width:36px; height: 36px; border-radius:100%") %>
+                    <%end%>
+                    <%= user.name %>
+                </label>
+                <span class="col-4 d-flex align-items-center justify-content-center" style="margin: 8px 0;">
+                    <%= user.views %>
+                </span>
+                <%end%>
+        </div>
+        <div class="col-3 row">
+            <% flag = true %>
+                <% @users.sort_by { |user| user.comments.size }.reverse.each do |user| %>
+            <% if flag %>
+                <h5 class="col-8">Most Comments</h5>
+                <h5 class="col-4 d-flex align-items-center justify-content-center">Total</h5>
+            <% flag = false %>
+            <% end %>
+                <label class="col-8" style="margin: 8px 0;">
+                    <% if user.avatar.present? %>
+                        <%= image_tag(user.avatar, style:"width:36px; height: 36px; border-radius:100%") if user.avatar.attached?%>
+                    <% else %>
+                        <%= image_tag("default_avatar1/default_avatar.png", style:"width:36px; height: 36px; border-radius:100%") %>
+                    <%end%>
+                    <%= user.name %>
+                </label>
+                <span class="col-4 d-flex align-items-center justify-content-center" style="margin: 8px 0;">
+                    <%= user.comments.size %>
+                </span>
+                <%end%>
+        </div>
+        <div class="col-3 row">
+            <% flag = true %>
+            <% @users.sort_by(&:created_at).each do |user| %>
+
+            <% if flag %>
+                <h5 class="col-8">Oldest Members</h5>
+                <h5 class="col-4 d-flex align-items-center justify-content-center">Join in</h5>
+            <% flag = false %>
+            <% end %>
+                <label class="col-8" style="margin: 8px 0;">
+                    <% if user.avatar.present? %>
+                        <%= image_tag(user.avatar, style:"width:36px; height: 36px; border-radius:100%") if user.avatar.attached?%>
+                    <% else %>
+                        <%= image_tag("default_avatar1/default_avatar.png", style:"width:36px; height: 36px; border-radius:100%") %>
+                    <%end%>
+                    <%= user.name %>
+                </label>
+                <span class="col-4 d-flex align-items-center justify-content-center" style="margin: 8px 0;">
+                    <%= user.created_at.strftime('%Y-%m-%d') %>
+                </span>
+                <%end%>
+        </div>
+    </div>

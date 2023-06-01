@@ -46,6 +46,7 @@ gem 'devise', '~> 4.9', '>= 4.9.2'
 gem 'bcrypt', '~> 3.1', '>= 3.1.12'
 gem 'erb_lint', '~> 0.4.0'
 gem 'ransack', '~> 3.2', '>= 3.2.1'
+gem 'cancancan', '~> 3.5'
 # Use Sass to process CSS
 # gem "sassc-rails"
 
@@ -75,4 +76,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem 'pundit', '~> 2.3'
 end

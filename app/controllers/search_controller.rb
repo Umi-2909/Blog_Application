@@ -1,8 +1,8 @@
 class SearchController < ApplicationController
   def index
-    @post = Post.new # hoặc tìm post phù hợp với trang tìm kiếm
+    @post = Post.new # Find the post
     @query = Post.ransack(params[:q])
     @posts = @query.result(distinct: true)
-    @user = current_user # hoặc tìm user phù hợp với trang tìm kiếm
+    @user = current_user # Find the user
   end
 end

@@ -12,21 +12,20 @@
     <tr>
       <td>
         <div class="d-flex align-items-center">
-              <%= image_tag(post.user.avatar, style:"width:45px; height: 45px; border-radius:100%") if post.user.avatar.attached?%>
+          <% if post.user.avatar.present? %>
+            <%= image_tag(post.user.avatar, style:"width:45px; height: 45px; border-radius:100%") if post.user.avatar.attached?%>
+          <% else %>
+            <%= image_tag("default_avatar1/default_avatar.png", style:"width:45px; height: 45px; border-radius:100%") %>
+          <% end %>
           <div class="ms-3">
             <p class="fw-bold mb-1"><%= link_to post.user.name, post.user %></p>
           </div>
         </div>
       </td>
       <td>
-        <p class="fw-normal mb-1"><%= link_to post.title, post %></p>
+        <p class="fw-normal mb-1"><%= link_to post.title.truncate_words(20), post %></p>
       </td>
-      <td><%= post.body.truncate_words(25) %></td>
-      <td>
-        <button type="button" class="btn btn-link btn-sm btn-rounded">
-          Edit
-        </button>
-      </td>
+      <td><%= post.body.truncate_words(20) %></td>
     </tr>
     <% end %>
   </tbody>
