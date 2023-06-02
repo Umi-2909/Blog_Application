@@ -1,5 +1,5 @@
 
-    <div class="d-flex">
+    <div class="d-flex" style="margin-left:16px;">
         <div class="col-3 row">
             <% flag = true %>
                 <% @users.sort_by(&:total_post).reverse.each do |user| %>
@@ -14,7 +14,7 @@
                     <% else %>
                         <%= image_tag("default_avatar1/default_avatar.png", style:"width:36px; height: 36px; border-radius:100%") %>
                     <%end%>
-                    <%= user.name %>
+                    <%= link_to user.name, user %>
                 </label>
                 <span class="col-4 d-flex align-items-center justify-content-center" style="margin: 8px 0;">
                     <%= user.total_post %>
@@ -35,7 +35,7 @@
                     <% else %>
                         <%= image_tag("default_avatar1/default_avatar.png", style:"width:36px; height: 36px; border-radius:100%") %>
                     <%end%>
-                    <%= user.name %>
+                    <%= link_to user.name, user %>
                 </label>
                 <span class="col-4 d-flex align-items-center justify-content-center" style="margin: 8px 0;">
                     <%= user.views %>
@@ -56,7 +56,7 @@
                     <% else %>
                         <%= image_tag("default_avatar1/default_avatar.png", style:"width:36px; height: 36px; border-radius:100%") %>
                     <%end%>
-                    <%= user.name %>
+                    <%= link_to user.name, user %>
                 </label>
                 <span class="col-4 d-flex align-items-center justify-content-center" style="margin: 8px 0;">
                     <%= user.comments.size %>
@@ -78,7 +78,7 @@
                     <% else %>
                         <%= image_tag("default_avatar1/default_avatar.png", style:"width:36px; height: 36px; border-radius:100%") %>
                     <%end%>
-                    <%= user.name %>
+                    <%= link_to user.name, user %>
                 </label>
                 <span class="col-4 d-flex align-items-center justify-content-center" style="margin: 8px 0;">
                     <%= user.created_at.strftime('%Y-%m-%d') %>
